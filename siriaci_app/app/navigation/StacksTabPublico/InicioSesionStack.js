@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 import Profile from "../../screens/profile/InicioSesion";
 import ProfileAdmin from "../../screens/profile/ProfileAdmin";
 import InicioSesion from "../../screens/profile/InicioSesion";
+
 const Stack = createStackNavigator();
 
 export default function InicioSesionStack() {
@@ -19,6 +20,7 @@ export default function InicioSesionStack() {
                 component={InicioSesion}
                 options={{ title: "Inicio de sesión" }}
             />
+           
 
         </Stack.Navigator>
     )

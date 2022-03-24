@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Picker } from "react-native";
+import { StyleSheet, Text, View, Picker, SafeAreaView, ScrollView, StatusBar } from "react-native";
 import React, { useState } from "react";
 import { Input, Button, Icon } from "react-native-elements";
 import { isEmpty } from "lodash";
@@ -65,7 +65,8 @@ export default function ResponsableForm(props) {
     }
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+    <ScrollView>
       <Input
         placeholder="Araceli"
         rightIcon={
@@ -142,7 +143,7 @@ export default function ResponsableForm(props) {
       </Text>
       <Picker
         selectedValue={selectedValue}
-        style={{ height: 60, width: 250 }}
+        style={{ height: 60, width: 250, marginBottom:20 }}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         errorMessage={error.aspecto}
       >
@@ -202,26 +203,31 @@ export default function ResponsableForm(props) {
         iconContainerStyle={{ marginRight: 20 }}
         onPress={registrer}
       />
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 4,
+    paddingTop: StatusBar.currentHeight,
   },
   btnContainer: {
     width: "70%",
   },
   btn: {
+    marginLeft:130,
+    marginBottom:20,
     color: "#fff",
     backgroundColor: "#06986a",
   },
+  labelInput:{
+    color:"black"
+  },
   text1:{
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    marginLeft:10,
+    fontFamily:"bold"
   }
+
 });

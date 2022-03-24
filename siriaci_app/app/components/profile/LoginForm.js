@@ -82,11 +82,11 @@ export default function LoginForm(props) {
         iconContainerStyle={{ marginRight: 10 }}
         onPress={login}
       />
-        <Text style={styles.textCreateAccount1}  onPress={() => navigation.navigate("userCreate")}>
+        <Text style={styles.textCreateAccount1}  onPress={() => navigation.navigate("forgotPassword")}>
         
         ¿Has olvidado tu contraseña?
       </Text>
-      <Text style={styles.textCreateAccount}  onPress={() => navigation.navigate("userCreate")}>
+      <Text style={styles.textCreateAccount}  onPress={() => navigation.navigate("createAccount")}>
         <Icon
           type="material-community"
           name="account-plus"
