@@ -1,6 +1,7 @@
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
 import Capsule from "../../screens/capsula/Capsule";
+import CapsulaInfo from "../Capsula/CapsulaInfo";
 const Stack = createStackNavigator();
 
 export default function CapsuleStack() {
@@ -16,6 +17,11 @@ export default function CapsuleStack() {
                 name="capsuleStack"
                 component={ Capsule }
                 options={{ title: "Capsula informativa" }}
+            />
+             <Stack.Screen
+                name="capsulaInfo"
+                component={ CapsulaInfo }
+                options={{ title: "Información capsula" }}
             />
             
 

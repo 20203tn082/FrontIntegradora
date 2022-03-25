@@ -1,20 +1,32 @@
-import { StyleSheet, Text, View, ScrollView, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { size } from "lodash"
-import { Icon, Image } from 'react-native-elements'
-import { useNavigation } from '@react-navigation/native'
-
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  FlatList,
+  ActivityIndicator,
+  TouchableOpacity,
+  LogBox,
+  ImageStore,
+} from "react-native";
+import React from "react";
+import { size } from "lodash";
+import { Icon, Image, Card} from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ListCapsulas(props) {
   console.log("props->", props);
-  const { images, navigation } = props
-
+  const navigation = useNavigation();
+  const { capsulas } = props;
+  console.log("capsulas->", capsulas);
   return (
     <ScrollView>
-      {size(images) > 0 ? (
+      {size(capsulas) > 0 ? (
         <FlatList
-          data={images}
-          renderItem={(image) => <Capsula image={image} navigation={navigation} />}
+          data={capsulas}
+          renderItem={(capsula) => (
+            <Capsula capsula={capsula} navigation={navigation} />
+          )}
           keyExtractor={(item, index) => index.toString()}
         //onEnd
         //que tan largo debe ser la interacción
@@ -26,45 +38,50 @@ export default function ListCapsulas(props) {
         </View>
       )}
     </ScrollView>
-  )
-} function Capsula(props) {
-  const { image, navigation } = props;
-  //console.log(image.item)
-  const { imagen, capsula } = image.item
-  const { titulo, contenido } = capsula
+  );
+}
 
-  console.log(imagen)
+function Capsula(props) {
+  console.log("propsCapsula->", props);
+  const { capsula, navigation } = props;
+  const { contenido, titulo, imagenesCapsula } = capsula.item;
+  const imagenPrueba = imagenesCapsula[capsula.index];
+  const { imagen } = imagenPrueba;
+
   return (
-    <TouchableOpacity >
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("capsulaInfo", {
+          capsula: props.capsula.item,
+          navigation: navigation,
+        })
+      }
+    >
       <View style={styles.container}>
-        <View style={styles.viewImage}>
-          <Image
-            resizeMode="cover"
-            PlaceholderContent={
-              <ActivityIndicator size="large" color="#131c46" />
-            }
+        <Card>
+          <Card.Title>{titulo}</Card.Title>
+          <Card.Divider />
+          <Card.Image
+            style={{ padding: 0 }}
             source={
               imagen
                 ? { uri: `data:image/jpeg;base64, ${imagen}` }
                 : require("../../../assets/icon.png")
             }
-            style={styles.img}
           />
-        </View>
-        <View>
-          <Text style={{ fontWeight: "bold" }}>{titulo}</Text> 
-          <Text style={{ paddingTop: 2, color: "gray" }}>{contenido}</Text>
-        </View>
+          <Text style={{ marginBottom: 10, marginTop: 5 }}>
+            {contenido}
+          </Text>
+        </Card>
       </View>
     </TouchableOpacity>
   );
 
-  //<Text style={{ fontWeight: "bold" }}>{titulo}</Text>  lo que se va a mostrar aparte de la 
+  //<Text style={{ fontWeight: "bold" }}>{titulo}</Text>  lo que se va a mostrar aparte de la
   //imagen de la capsula
 }
 
 const styles = StyleSheet.create({
-
   img: {
     width: 80,
     height: 80,
@@ -76,4 +93,4 @@ const styles = StyleSheet.create({
   viewImage: {
     marginRight: 15,
   },
-})
+});

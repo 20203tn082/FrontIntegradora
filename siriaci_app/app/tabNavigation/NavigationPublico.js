@@ -28,18 +28,18 @@ export default function NavigationPublico() {
                 //3.- Perfil
                 
             >
-                
+                <Tab.Screen
+                    name="inicio"
+                    component={InicioSesionStack}
+                    options={{ title: "Inicio de sesión" }}
+                />
                 <Tab.Screen
                     name="capsula"
                     component={CapsuleStack}
                     options={{ title: "Capsula informativa" }}
                 />
 
-                <Tab.Screen
-                    name="inicio"
-                    component={InicioSesionStack}
-                    options={{ title: "Inicio de sesión" }}
-                />
+                
             </Tab.Navigator>
         </NavigationContainer>
     );

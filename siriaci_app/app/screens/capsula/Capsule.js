@@ -5,10 +5,10 @@ import { useFocusEffect } from '@react-navigation/native';
 
 export default function Capsule(props) {
   const {navigation} = props;
-  const [images, setImages] = useState([])
+  const [capsulas, setCapsulas] = useState([])
 
   const getImages = async() =>{
-    const response = await fetch("http://localhost:8080/api/image_capsula/", {method: "GET", headers:{"Content-Type": "application/json"}})
+    const response = await fetch("http://192.168.0.8:8080/api/capsula/", {method: "GET", headers:{"Content-Type": "application/json"}})
     return response.json()
   }
   useFocusEffect(
@@ -16,7 +16,7 @@ export default function Capsule(props) {
     useCallback(() =>{
       //con el .then obtenemos el array y lo guardamos en response
       getImages().then((response) =>{
-        setImages(response.data);
+        setCapsulas(response.contenido);
       }) 
     }, [])
   )
@@ -25,7 +25,7 @@ export default function Capsule(props) {
 
   return (
     <View>
-      <ListCapsulas images= {images} navigation={navigation}/>
+      <ListCapsulas capsulas= {capsulas} navigation={navigation}/>
     </View>
   );
 }

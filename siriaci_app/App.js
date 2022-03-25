@@ -9,9 +9,25 @@ import NavigationUsuario from './app/tabNavigation/NavigationUsuario';
 export default function App() {
 
   return (
-    <NavigationUsuario/>
+    <NavigationPublico/>
     //
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+  container:{
+    backgroundColor:"#FFF",
+    height:"100%",
+    //marginTop: 40,
+  },
+
+  img:{
+    width:"100%",
+    height:150,
+    marginTop:40,
+    marginBottom:20,
+  }
+
+});
+
