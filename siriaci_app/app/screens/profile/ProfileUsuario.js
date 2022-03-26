@@ -5,7 +5,7 @@ import InicioSesion from './InicioSesion'
 export default function ProfileUsuario() {
   return (
     <View>
-    <InicioSesion/>
+      <Text>Perfil del Usuario</Text>
     </View>
   )
 }

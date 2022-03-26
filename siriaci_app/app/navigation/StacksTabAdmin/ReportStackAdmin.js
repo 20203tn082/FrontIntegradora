@@ -1,6 +1,7 @@
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
 import Report from "../../screens/report/Report";
+import CreateReport from "../../components/reports/CreateReport";
 const Stack = createStackNavigator();
 
 export default function ReportStackAdmin() {
@@ -16,6 +17,11 @@ export default function ReportStackAdmin() {
                 name="report"
                 component={ Report }
                 options={{ title: "Reporte" }}
+            />
+             <Stack.Screen
+                name="createReport"
+                component={ CreateReport }
+                options={{ title: "Crear Nuevo Reporte" }}
             />
             
         </Stack.Navigator>

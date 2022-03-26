@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import CreateReport from '../../../components/reports/CreateReport'
 
-export default function Reports() {
+export default function ListaResportes() {
   return (
-    <CreateReport/>
+    <View>
+      <Text>ListaResportes</Text>
+    </View>
   )
 }
 

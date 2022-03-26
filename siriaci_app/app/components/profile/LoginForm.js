@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { Input, Button, Icon } from "react-native-elements"
-import { isEmpty } from "lodash";
+import { includes, isEmpty } from "lodash";
 import Loading from "../Loading";
+import Navigation from "../../navigation/Navigation";
 
 
 export default function LoginForm(props) {
@@ -22,16 +23,32 @@ export default function LoginForm(props) {
 
   const login = () => {
     if (isEmpty(formData.email) || isEmpty(formData.password)) {
-      setError({
-        email: "Campo obligatorio*",
-        password: "Campo obligatorio*",
-      });
-    } else {
-      setLoading(true);
+      if(isEmpty(formData.email)){
+        setError((error) => ({...error, email: "Campo Obligatorio"}))
+      }else{
+        if(!includes(formData.email, "@")){
+          setError((error) => ({...error, email: "Formato de correo inválido"}))
+        }else{
+          setError((error) => ({...error, email: ""}))
+        }
+      }
+      if(isEmpty(formData.password)){
+        setError((error) => ({...error, password: "Campo Obligatorio"}))
+      }else{
+        setError((error) => ({...error, password: ""}))
+      }
+    }else{  
+      console.log("Entro aqui")  
       setError({
         email: "",
         password: "",
       });
+      if(includes(formData.email, "omar@gmail.com") && includes(formData.password, "omar12345") ){
+          <Navigation/>
+      }else{
+        console.log("Fallo el incio de sesion")
+        setLoading(false);
+      }
     }
   };
 

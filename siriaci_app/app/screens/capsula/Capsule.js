@@ -8,7 +8,7 @@ export default function Capsule(props) {
   const [capsulas, setCapsulas] = useState([])
 
   const getImages = async() =>{
-    const response = await fetch("http://192.168.0.8:8080/api/capsula/", {method: "GET", headers:{"Content-Type": "application/json"}})
+    const response = await fetch("http://192.168.111.103:8080/api/capsula/", {method: "GET", headers:{"Content-Type": "application/json"}})
     return response.json()
   }
   useFocusEffect(

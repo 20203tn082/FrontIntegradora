@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
 import CapsuleStack from './StacksTabPublico/CapsuleStack' 
 import ProfileStack from './StacksTabPublico/InicioSesionStack';
-import ReportStack from './ReportStack';
+import ReportStack from './ReportStack/ReportStack';
 const Tab = createBottomTabNavigator();
 export default function Navigation() {
     return (

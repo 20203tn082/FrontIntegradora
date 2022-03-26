@@ -13,12 +13,12 @@ export default function CreateAccount(props) {
   const [divisiones, setDivisiones] = useState([])
 
   const getCarreras = async() =>{
-    const response = await fetch("http://192.168.0.8:8080/api/carrera/", {method: "GET", headers:{"Content-Type": "application/json"}})
+    const response = await fetch("http://192.168.111.103:8080/api/carrera/", {method: "GET", headers:{"Content-Type": "application/json"}})
     return response.json()
   }
 
   const getDivisiones = async() =>{
-    const response = await fetch("http://192.168.0.8:8080/api/division/", {method: "GET", headers:{"Content-Type": "application/json"}})
+    const response = await fetch("http://192.168.111.103:8080/api/division/", {method: "GET", headers:{"Content-Type": "application/json"}})
     return response.json()
   }
 
